@@ -1,0 +1,12 @@
+# OS / editor files
+.DS_Store
+Thumbs.db
+
+# Editor swap / backup
+*~
+*.swp
+*.swo
+
+# IDEs
+.vscode/
+.idea/
