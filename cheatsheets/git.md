@@ -2,7 +2,7 @@
 
 **Purpose:** Distributed version control: track changes, collaborate, and manage history.  
 **Assumptions:** Git ≥ 2.23 recommended (supports `switch`/`restore`).  
-**Last updated:** 2026-01-08
+**Last updated:** 2026-04-07
 
 ---
 
@@ -39,6 +39,39 @@ git config --global init.defaultBranch main
 git config --global core.editor "<editor>"
 git config --global -l          # list global config
 git config -l                   # list effective config
+```
+
+### Credential helpers (HTTPS)
+
+```sh
+git config --global credential.helper cache   # cache in memory (default 15 min)
+git config --global credential.helper store   # save to ~/.git-credentials (plaintext)
+```
+
+### SSH key setup (recommended for long-term use)
+
+```sh
+ssh-keygen -t ed25519 -C "your-email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub       # copy this to your Git host (GitHub, Gitea, etc.)
+```
+
+If the remote SSH service runs on a non-standard port:
+
+```
+# ~/.ssh/config
+Host git.example.com
+  HostName git.example.com
+  User git
+  Port 2222
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+Test connectivity:
+
+```sh
+ssh -T git@git.example.com
 ```
 
 ---
@@ -93,6 +126,7 @@ git remote show origin          # details
 
 git fetch                       # update remote-tracking branches
 git pull                        # fetch + integrate (merge or rebase per config)
+git pull --rebase               # fetch + rebase (keeps linear history)
 git push                        # push current branch
 git push -u origin <branch>     # set upstream tracking
 ```
@@ -233,6 +267,46 @@ git clean -n                    # preview removing untracked files
 git clean -fd                   # remove untracked files/dirs (danger)
 git gc                          # garbage-collect/optimize
 ```
+
+---
+
+## Search & file history
+
+```sh
+git grep "search-term"          # search tracked files for a string
+git log -p -- <file>            # show commits + diffs for a specific file
+git blame <file>                # who changed each line (and when)
+```
+
+---
+
+## .gitignore (common patterns)
+
+```gitignore
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Language / tool artifacts
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+venv/
+
+# Build output
+*.o
+*.log
+*.retry
+
+# Secrets — never commit plaintext credentials
+.env
+*.pem
+```
+
+Tip: check [github.com/github/gitignore](https://github.com/github/gitignore) for language-specific templates.
 
 ---
 
