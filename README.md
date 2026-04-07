@@ -4,6 +4,8 @@ A curated collection of concise, one-page cheat sheets for command-line tools an
 
 ## Contents
 
+- **claude-code** — [cheatsheets/claude-code.md](cheatsheets/claude-code.md)
+- **git** — [cheatsheets/git.md](cheatsheets/git.md)
 - **tmux** — [cheatsheets/tmux.md](cheatsheets/tmux.md)
 
 ## Conventions
