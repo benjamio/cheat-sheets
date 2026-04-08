@@ -7,6 +7,8 @@ A curated collection of concise, one-page cheat sheets for command-line tools an
 - **claude-code** — [cheatsheets/claude-code.md](cheatsheets/claude-code.md)
 - **git** — [cheatsheets/git.md](cheatsheets/git.md)
 - **tmux** — [cheatsheets/tmux.md](cheatsheets/tmux.md)
+- **kindle-to-epub** — [cheatsheets/kindle-to-epub.md](cheatsheets/kindle-to-epub.md)
+- **qemu-kvm-windows** — [cheatsheets/qemu-kvm-windows.md](cheatsheets/qemu-kvm-windows.md)
 
 ## Conventions
 
